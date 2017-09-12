@@ -1,0 +1,6 @@
+Hotel.py 為資料處理跟 Unigram Model
+
+feature_mining.py 為建立feature 尚未完成
+
+
+註釋部分許多未刪除 因為之後可能會繼續 留著方便研究

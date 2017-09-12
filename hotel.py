@@ -19,6 +19,9 @@ class hotel_data:
 		self.jieba_data = list() # after jieba
 		self.exac_data = list() 
 		self.keyword_table = None
+		
+
+
 		self.rest_data = list()
 		self.final_text = list()
 		self.clean_title = list()
@@ -26,23 +29,11 @@ class hotel_data:
 #		self.exactly_match(self.data)
 #		print self.exac_data
 
-	def exactly_match(self, text):
+	def exactly_match(self, text): #目前作為jieba function
 		for index, t in enumerate(text):
 			words = list()
 			words = jieba.cut(t[2], cut_all = False)
 			self.jieba_data.append(list(words))
-#			if t[1].replace(' ', '') in t[2].replace(' ', ''):
-#				t[5] = 1
-#				t[6] = 1
-#				self.exac_data.append(t)
-#			else:
-#				self.rest_data.append(t)
-#				continue
-#		sorted(text, key = lambda x : x[4], cmp = if )
-#		print self.exac_data
-#		print self.rest_data[3]
-#		print self.rest_data[4]
-#		print len(self.exac_data[0])
 
 	def remove_symbol(self, input_str):  # remove useless symbol
 #		print len(input_str)
@@ -135,7 +126,7 @@ def main():
 #	print type(ss.jieba_data[0])
 
 
-	temp_jieba = ss.jieba_data[:]
+	temp_jieba = ss.jieba_data[:] #copy new list prevent same reference
 
 	kk = ss.getVectorKeywordIndex(temp_jieba)
 
@@ -161,10 +152,10 @@ def main():
 	jj = ss.cal_KeywordTable(temp2_jieba, kk) 
 #	print [i for i in kk.keys()]
 
-#	for key, value in jj.iteritems():
-#		print key, value
+	for key, value in jj.iteritems(): #print lm
+		print key, value
 
-	print jj['貝爾飯店']	
+	print '東京' + str(jj['東京'])
 
 #	print jj
 
@@ -174,7 +165,7 @@ def main():
 	ss.final_text.append(ss.rest_data)
 #	print type(ss.final_text)
 #	print ss.final_text[0]
-"""
+"""  #output to csv
 	#make output file
 	output = list()
 #	output = np.asarray(ss.final_text).reshape((7,2))
